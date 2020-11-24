@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GRPC demo</title>
+</head>
+
+<body>
+  <button onclick="hello()">Send Hello</button>
+  <br><br>
+  <input id="name">
+  <button onclick="helloWithName()">Send Hello With Name</button>
+</body>
+<script>var URL = 'http://localhost:4300';
+
+function hello() {
+  fetch("".concat(URL, "/hello")).then(function (res) {
+    return res.json();
+  }).then(function (res) {
+    return alert(res.message);
+  });
+}
+
+function helloWithName() {
+  var _document$getElementB;
+
+  var name = ((_document$getElementB = document.getElementById('name')) === null || _document$getElementB === void 0 ? void 0 : _document$getElementB.value) || '';
+  fetch("".concat(URL, "/hello-with-name?name=").concat(name)).then(function (res) {
+    return res.json();
+  }).then(function (res) {
+    return alert(res.message);
+  });
+}</script>
+
+</html>
